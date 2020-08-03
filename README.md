@@ -69,7 +69,6 @@ Configure the Coral Board, following the directions from [Google](https://coral.
 
 2. `sudo chown mendel:mendel /usr/local/eyeqt`
 
-# TODO: Remove stakeout box from this code below. What is the correct code?
 3. `git clone https://github.com/IQTLabs/EyeQT-Software.git /usr/local/eyeqt`
 
 4. `cd /usr/local/eyeqt`
@@ -94,7 +93,7 @@ SECRET_KEY=<AWS Secret Key for S3 bucket>
 
 3. Save the file and reboot the Coral Board.
 
-5. Confirm that `ACCESS_KEY` and `SECRET_KEY` are in in the environment by typing `env`.
+4. Confirm that `ACCESS_KEY` and `SECRET_KEY` are in in the environment by typing `env`.
  
 
 #### Build Docker Containers
