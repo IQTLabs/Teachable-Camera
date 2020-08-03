@@ -14,10 +14,10 @@
 
 5. Confirm that `ACCESS_KEY` and `SECRET_KEY` are in in the environment by typing `env`.
 
-6. `cd /usr/local/stakeout-box/containers`
+6. `cd /usr/local/eyeqt/containers`
 
-7. `docker build -t stakeout-box/upload:0.1 -t stakeout-box/upload:latest .`
+7. `docker build -t eyeqt/upload:0.1 -t eyeqt/upload:latest .`
 
-8. `docker run --detach --restart unless-stopped --name s3upload -e ACCESS_KEY=$ACCESS_KEY -e SECRET_KEY=$SECRET_KEY -v /home/mendel/capture:/capture -v /home/mendel/archive:/archive stakeout-box/upload`
+8. `docker run --detach --restart unless-stopped --name s3upload -e ACCESS_KEY=$ACCESS_KEY -e SECRET_KEY=$SECRET_KEY -v /home/mendel/capture:/capture -v /home/mendel/archive:/archive eyeqt/upload`
 
 

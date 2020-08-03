@@ -14,5 +14,3 @@ COPY relay.py relay.py /app/
 
 ENTRYPOINT python3 /app/relay.py
 
-### docker run --detach --restart unless-stopped --device=/dev/ttyACM0 --network="host" --name gcode-receive mchadwick/gcode-receiver:latest
-### docker run --detach --restart unless-stopped --name s3upload -e ACCESS_KEY=$ACCESS_KEY -e SECRET_KEY=$SECRET_KEY -v /home/mendel/capture:/capture -v /home/mendel/archive:/archive stakeout-box/upload

@@ -13,6 +13,3 @@ RUN apk add --no-cache git python3 ca-certificates libffi-dev && \
 COPY s3upload.py uploadFiles.py /app/
 
 ENTRYPOINT python3 /app/uploadFiles.py
-
-### docker build -t stakeout-box/upload:0.1 -t stakeout-box/upload:latest .
-### docker run --detach --restart unless-stopped --name s3upload -e ACCESS_KEY=$ACCESS_KEY -e SECRET_KEY=$SECRET_KEY -v /home/mendel/capture:/capture -v /home/mendel/archive:/archive stakeout-box/upload
