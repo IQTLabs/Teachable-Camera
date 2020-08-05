@@ -3,19 +3,19 @@
 
 Are you interested in using an inexpensive, low-power embedded device to perform object detection in remote locations and monitor this system wirelessly? For instance, you might want to determine if a raccoon is rummaging in your trash. EyeQT can help!
 
-For a few hundred USD and moderate programming skills, you can 
+For a few hundred U.S. dollars and moderate programming skills, you can 
 (a) build your own computer vision models that perform object detection as well as identify an object and its location in the image
 (b) deploy these models to a low-cost computer called the [Google Coral Dev Board](https://coral.ai/products/dev-board) and 
 (c) use a simple web interface to monitor the images collected.
 
 This repository provides the code and the necessary explanation for you to build EyeQT by yourself.
 
-EyeQT is an exploration of a current trend in computing and artificial intelligence research: performing machine learning inference on "edge" devices. These devices are designed to balance compute with power effiency and cost, allowing for Machine Learning (ML) to be used in new environments. Since the ML model runs completely on the device and not on a desktop machine or server, it can work without an Internet connection and can provide answers in milliseconds. This low-latency allows for ML to be part of a machines decision process in the field.
+EyeQT explores a current trend in computing and artificial intelligence research: performing machine learning inference on "edge" devices. These devices are designed to balance compute with power effiency and cost, allowing for machine learning (ML) to be used in new environments. Since the ML model runs completely on the device and not on a desktop machine or server, it can work without an Internet connection and can provide answers in milliseconds. This low-latency allows for ML to be part of a machine's decision process in the field.
 
 
 ### EyeQT Capabilities
 - Use a generic object detection model to capture images of a general class of objects. This runs completely on the Coral Board, allowing for this capture to happen in a remote location.
-- After a custom Object Detection model has been created, it can be run on the Coral Board and images will be saved of the object of interested.
+- After a custom object detection model has been created, it can be run on the Coral board and will save images of objects of interest.
 - Flags can be set to prevent images from being captured when certain objects are in the frame, such as people.
 - If the Coral board is connected to a network, a web frontend lets you monitor the camera view and what objects have been detected.
 - When objects are detected, it can be announced over [MQTT](https://mqtt.org/) if there is a network connection, or over [LoRa](https://lora-alliance.org/) if the device is in a remote location.
@@ -40,12 +40,12 @@ Required Hardware:
 ![Diagram of Arch](images/coral-box.png)
 
 ### 📁 Folders 
-- **archive** - folder where images/json will go after being upload to S3
-- **capture** - folder where images/json are saved after being created. *s3upload* will automatically upload all files from here to S3
-- **[dashboard](dashboard/README.md)** - React-based frontend. Changes here need to be packaged into static code and copied into dashboard-serve
-- **[dashboard-serve](dashboard-serve/README.md)** - NGINX proxy that serves up a static version of the React dashboard and also passes connections to the video feed from the *detect* program
-- **[detect](detect/README.md)** - Python program that looks for objects and saves files when they are detected
-- **mqtt** - The Dockerfile for the MQTT server. The configuration needs to be customized to allow for MQTT over websockets
+- **archive** - folder where images/json will go after being upload to S3.
+- **capture** - folder where images/json are saved after being created. *s3upload* will automatically upload all files from here to S3.
+- **[dashboard](dashboard/README.md)** - React-based frontend. Changes here need to be packaged into static code and copied into dashboard-serve.
+- **[dashboard-serve](dashboard-serve/README.md)** - NGINX proxy that serves up a static version of the React dashboard and also passes connections to the video feed from the *detect* program.
+- **[detect](detect/README.md)** - Python program that looks for objects and saves files when they are detected.
+- **mqtt** - The Dockerfile for the MQTT server. The configuration needs to be customized to allow for MQTT over websockets.
 - **[relay](relay/README.md)** - Copies MQTT messages from a local broker to a public broker on the Internet. *This is an optional component.*
 - **[s3upload](s3upload/README.md)** - Python program that watches folders and automatically uploads to S3 and archives the files. *This is an optional component.*
 - **[experiments](experiments/README.md)** - Python utility for running a trained model in the TFlite format against a folder of images. It will generate images with bounding box overlays for the objects it detects.
@@ -63,7 +63,7 @@ There are 3 containers that get built via the docker-compose file:
 
 ## Installation 
 
-Configure the Coral Board, following the directions from [Google](https://coral.ai/docs/dev-board/get-started/). Get the Coral Board on the network and SSH over to it. On the Coral Board, perform the following steps:
+Configure the Coral Board by following the directions from [Google](https://coral.ai/docs/dev-board/get-started/). Get the Coral Board on the network and SSH over to it. On the Coral Board, perform the following steps:
 
 1. `sudo mkdir /usr/local/eyeqt`
 
@@ -107,7 +107,7 @@ To watch output: `docker-compose up`
 To run as a daemon: `docker-compose up -d`
 
 #### View Dashboard
-On a separate computer, enter the Coral Boards IP address in a browser to view the dashboard.
+On a separate computer, enter the Coral Board's IP address in a browser to view the dashboard.
 
 ### 🗂MQTT Topics
 
