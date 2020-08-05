@@ -1,14 +1,14 @@
 # EyeQT Detect
 
-This folder contain the heart of EyeQT, the program which performs the object detection. It started from Google's [example code](https://github.com/google-coral/examples-camera/tree/master/opencv) for using [OpenCV](https://github.com/opencv/opencv) to perform Object Detection on camera images. OpenCV provides a flexible framework for ingesting video, formatting it and taking snapshots. It should support using RTSP IP Cameras, USB WebCams and the Coral Camera. 
+This folder contain the heart of EyeQT, the program which performs the object detection. It started from Google's [example code](https://github.com/google-coral/examples-camera/tree/master/opencv) for using [OpenCV](https://github.com/opencv/opencv) to perform object detection on camera images. OpenCV provides a flexible framework for ingesting video, formatting it and taking snapshots. It should support using RTSP IP Cameras, USB WebCams and the Coral Camera. 
 
-This program has only be tested on the [Google Coral Dev Board](https://coral.ai/products/dev-board), but it should work on any platform the supports the Google Coral USB Accelerator.
+This program has only be tested on the [Google Coral Dev Board](https://coral.ai/products/dev-board), but it should work on any platform that supports the Google Coral USB Accelerator.
 
 ## What it does
 
-This program will save an image everytime an object is detected. While the Coral Accelerator performs object detection at 30fps, an image will only be saved at a maximum rate of once per second to prevent storage from filling up. Using the **include** and **exclude** arguments (described) below, you can limit what types of objects trigger an image being saved. This makes it easy to build a dataset of images of a particular type of object. The images are saved into the `capture` directory, in the root of the repo.
+This program will save an image everytime an object is detected. While the Coral Accelerator performs object detection at 30fps, an image will only be saved at a maximum rate of once per second to prevent storage from filling up. Using the **include** and **exclude** arguments (described) below, you can limit what types of objects trigger an image being saved. This makes it easy to build a dataset of images of a particular type of object. The images are saved into the `capture` directory in the root of the repo.
 
-A JSON file is saved alongside each image. It contains array of bounding boxes for all of the objects detected in an image. An example JSON file is below:
+A JSON file is saved alongside each image. It contains an array of bounding boxes for all of the objects detected in an image. An example JSON file is below:
 ````
 [{
 	"bbox": {
@@ -34,7 +34,7 @@ A JSON file is saved alongside each image. It contains array of bounding boxes f
 The **top** and **left** coordinates for the bounding boxes are relative to the upper left hand corner of the image, measured in pixels.
 
 ### Webserver
-The program includes a small Flask server the provides a stream of the images being captured, with the detected objects overlaid. This image is progressively updated, providing a live view. The image is the only thing being served up by this server. The Flask server is available on port 8888. The Web App is provided by [**dashboard-serve**](../dashboard-serve/README.md) which serves a static version of [**dashboard**](../dashboard/README.md).
+The program includes a small Flask server that provides a stream of the images being captured with the detected objects overlaid. This image is progressively updated, providing a live view. The image is the only thing being served up by this server. The Flask server is available on port 8888. The Web App is provided by [**dashboard-serve**](../dashboard-serve/README.md) which serves a static version of [**dashboard**](../dashboard/README.md).
 
 ### MQTT
 Everytime an object detection triggers an image being saved, an MQTT message is sent out on the **detection** topic. A small snapshot of that image is also sent out on the **detection-image** topic. Additionally, a count of each type of object currently being detected is sent out on a periodic basis on the **detection-count** topic. More details on the MQTT message and topic formats can be found in the [Main Readme](../README.md). Port 7447 is used to connect to the MQTT broker.
@@ -82,7 +82,6 @@ If you want to run the program directly from the command, the following are some
 - `python3 detect.py --videosrc=net --netsrc=rtsp://192.168.1.43/mpeg4/media.amp`
 - `python3 detect.py --videosrc=net --netsrc=rtsp://192.168.1.43/mpeg4/media.amp --top_k=10 --threshold=0.2`
 - `python3 detect.py --videosrc=net --netsrc=rtsp://192.168.1.43/mpeg4/media.amp --top_k=10 --threshold=0.4 --exclude=person,car`
-
 - `python3 detect.py --videosrc=net --netsrc=rtsp://192.168.1.202/img/video.sav --top_k=10 --threshold=0.45 --exclude=person,car`
 
 - `python3 detect.py --videosrc=net --netsrc=rtsp://192.168.1.43/mpeg4/media.amp --top_k=10 --threshold=0.4 --exclude=person,car,"traffic light" --srcsize=1024,768`
