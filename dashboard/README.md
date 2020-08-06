@@ -2,12 +2,12 @@
 
 This is a web based dashboard for EyeQT. It lets you see what objects have been detected and provides a live view of the camera feed. It is intended to be a starting point for building out a more complete application.
 
-1[Dashboard screenshot](../images/dashboard.png)
+[Dashboard screenshot](../images/dashboard.png)
 
 ## Design
 The web app is built using React with the Martial UI framework. It was started off of the Martial UI Dashboard example. The video feed is simply a JPEG image that gets progressively updated. A Javascript MQTT client is used to receive object detection information.
 
-The web app gets compiled into a set of static files that are served up by the Coral Board. The [dashboard-server](../dashboard-server/README.md) container handles serving these files. The static files must be compile on a separate computer, there is not enough memory on the Coral board to do it there. 
+The web app gets compiled into a set of static files that are served up by the Coral Board. The [dashboard-server](../dashboard-server/README.md) container handles serving these files. The static files must be compiled on a separate computer because there is not enough memory on the Coral board to do it there. 
 
 If you make changes to the web app, you need to recompile the static files, copy them to the dashboard-serve folder and then move the updated `dashboard-serve` folder to the Coral board using `scp`.
 
@@ -16,7 +16,7 @@ If you make changes to the web app, you need to recompile the static files, copy
 
 ### Install Tools
 
-1. On a separate computer install both Node (which comes with NPM). 
+1. On a separate computer install Node (which comes with NPM). 
 
 2. In this directory run `npm install`
 
