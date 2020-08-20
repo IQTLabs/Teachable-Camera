@@ -1,6 +1,6 @@
-# EyeQT Detect
+# Teachable Camera Detect
 
-This folder contain the heart of EyeQT, the program which performs the object detection. It started from Google's [example code](https://github.com/google-coral/examples-camera/tree/master/opencv) for using [OpenCV](https://github.com/opencv/opencv) to perform object detection on camera images. OpenCV provides a flexible framework for ingesting video, formatting it and taking snapshots. It should support using RTSP IP Cameras, USB WebCams and the Coral Camera. 
+This folder contain the heart of Teachable Camera, the program which performs the object detection. It started from Google's [example code](https://github.com/google-coral/examples-camera/tree/master/opencv) for using [OpenCV](https://github.com/opencv/opencv) to perform object detection on camera images. OpenCV provides a flexible framework for ingesting video, formatting it and taking snapshots. It should support using RTSP IP Cameras, USB WebCams and the Coral Camera. 
 
 This program has only be tested on the [Google Coral Dev Board](https://coral.ai/products/dev-board), but it should work on any platform that supports the Google Coral USB Accelerator.
 

@@ -9,7 +9,7 @@ url.port = 9001;
 url.pathname = "/";
 console.log("url: " + url);
 const websocketUrl = url.toString(); //"ws://192.168.1.200:9001";
-const apiEndpoint = "/eyeqt";
+const apiEndpoint = "/teachable-camera";
 function getClient() {
   const client = mqtt.connect(websocketUrl);
   client.stream.on("error", (err) => {

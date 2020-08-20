@@ -1,19 +1,19 @@
-# EyeQT
+# Teachable Camera
 ## Object detection at the edge, with Google's Coral dev board
 
-Are you interested in using an inexpensive, low-power embedded device to perform object detection in remote locations and monitor this system wirelessly? For instance, you might want to determine if a raccoon is rummaging in your trash. EyeQT can help!
+Are you interested in using an inexpensive, low-power embedded device to perform object detection in remote locations and monitor this system wirelessly? For instance, you might want to determine if a raccoon is rummaging in your trash. Teachable Camera can help!
 
 For a few hundred U.S. dollars and moderate programming skills, you can 
 (a) build your own computer vision models that perform object detection as well as identify an object and its location in the image
 (b) deploy these models to a low-cost computer called the [Google Coral Dev Board](https://coral.ai/products/dev-board) and 
 (c) use a simple web interface to monitor the images collected.
 
-This repository provides the code and the necessary explanation for you to build EyeQT by yourself.
+This repository provides the code and the necessary explanation for you to build a Teachable Camera by yourself.
 
-EyeQT explores a current trend in computing and artificial intelligence research: performing machine learning inference on "edge" devices. These devices are designed to balance compute with power effiency and cost, allowing for machine learning (ML) to be used in new environments. Since the ML model runs completely on the device and not on a desktop machine or server, it can work without an Internet connection and can provide answers in milliseconds. This low-latency allows for ML to be part of a machines decision process in the field.
+Teachable Camera explores a current trend in computing and artificial intelligence research: performing machine learning inference on "edge" devices. These devices are designed to balance compute with power effiency and cost, allowing for machine learning (ML) to be used in new environments. Since the ML model runs completely on the device and not on a desktop machine or server, it can work without an Internet connection and can provide answers in milliseconds. This low-latency allows for ML to be part of a machines decision process in the field.
 
 
-### EyeQT Capabilities
+### Teachable Camera Capabilities
 - Use a generic object detection model to capture images of a general class of objects. This runs completely on the Coral Board, allowing for this capture to happen in a remote location.
 - After a custom object detection model has been created, it can be run on the Coral Board and will save images of detected objects.
 - Flags can be set to prevent images from being captured when certain objects are in the frame, such as people.
@@ -33,7 +33,7 @@ Required Hardware:
 - Required skill: Comfortable with navigating, executing commands, and understanding errors in a Linux or MacOS terminal 
 
 
-*Refer to the EyeQT Hardware repo for potential configurations*
+*Refer to the Teachable Camera Hardware repo for potential configurations*
 
 
 ### Components
@@ -65,13 +65,13 @@ There are 3 containers that get built via the docker-compose file:
 
 Configure the Coral Board by following the directions from [Google](https://coral.ai/docs/dev-board/get-started/). Get the Coral Board on the network and SSH over to it. On the Coral Board, perform the following steps:
 
-1. `sudo mkdir /usr/local/eyeqt`
+1. `sudo mkdir /usr/local/teachable-camera`
 
-2. `sudo chown mendel:mendel /usr/local/eyeqt`
+2. `sudo chown mendel:mendel /usr/local/teachable-camera`
 
-3. `git clone https://github.com/IQTLabs/EyeQT-Software.git /usr/local/eyeqt`
+3. `git clone https://github.com/IQTLabs/Teachable-Camera.git /usr/local/teachable-camera`
 
-4. `cd /usr/local/eyeqt`
+4. `cd /usr/local/teachable-camera`
 
 5. `chmod 755 *.sh`
 
@@ -111,7 +111,7 @@ On a separate computer, enter the Coral Boards IP address in a browser to view t
 
 ### 🗂MQTT Topics
 
-**eyeqt/[unit id]/detection** 
+**teachable-camera/[unit id]/detection** 
 Sent every time an object of interest is detected. The message contains a JSON object, listing all of the objects detected in a frame. The Key `objects` is an array of strings listing all of the objects currently detected. 
 
 Example message:
@@ -119,7 +119,7 @@ Example message:
 {  "objects": ['object1', 'object2', 'object3']}
 ````
 
-**eyeqt/[unit id]/detection-count** 
+**teachable-camera/[unit id]/detection-count** 
 Sent every 10 seconds. The message contains a JSON object with a count of how many of each type of object has been detected in a frame. In the message, each object type is a key and the value is the number of those objects detected in the frame.
 
 Example message:
@@ -130,5 +130,5 @@ Example message:
 }
 ````
 
-**eyeqt/[unit id]/detection-image**
+**teachable-camera/[unit id]/detection-image**
 Sent every time an object of interest is detected. The message contains a small jpeg of the image where the object of interest was detected. It is an array of bytes. The `dashboard/src/Dashboard.js` file has an example of how to decode and display this file.

@@ -37,7 +37,7 @@ def on_disconnect(client, userdata, rc):
 ##       Initialize Local MQTT Bus         ##
 #############################################
 broker_address=config[Unit][0]
-local_topic= '/eyeqt'+config[Unit][1]
+local_topic= '/teachable-camera'+config[Unit][1]
 print("connecting to MQTT broker at "+broker_address+", channel '"+local_topic+"'")
 clientLocal = mqtt.Client("S3-Upload-"+ID) #create new instance
 clientLocal.on_message = on_message_local #attach function to callback

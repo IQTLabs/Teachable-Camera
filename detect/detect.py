@@ -81,7 +81,7 @@ def on_disconnect(client, userdata, rc):
 ##       Initialize Local MQTT Bus         ##
 #############################################
 broker_address=config[Unit][0]
-local_topic= '/eyeqt/' + uuidCoral + '/detect'
+local_topic= '/teachable-camera/' + uuidCoral + '/detect'
 print("connecting to MQTT broker at "+broker_address+", channel '"+local_topic+"'")
 processName = "Detect-"+ID
 clientLocal = mqtt.Client(processName) #create new instance

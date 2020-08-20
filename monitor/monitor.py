@@ -22,7 +22,7 @@ if sys.argv[2:]:
       serialPort = sys.argv[2]
 
 config = {}
-config['Local'] = ["127.0.0.1", "/eyeqt/+/detect", 'localhost, for onboard system monitoring']
+config['Local'] = ["127.0.0.1", "/teachable-camera/+/detect", 'localhost, for onboard system monitoring']
 config['Public'] = ["broker.hivemq.com", mqttPublicBroker, 'Public MQTT Bus Monitoring']
 timeTrigger = 0
 key = mqttKey

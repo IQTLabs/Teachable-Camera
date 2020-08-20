@@ -171,8 +171,8 @@ export default function Dashboard() {
     //storeMqttClient(client);
     setClient(client);
     mqttService.onMessage(client, handleMessage);
-    //mqttService.subscribe(client, "/eyeqt/#");
-    // REmember that the API Endpoint is set to /eyeqt in the MqttService
+    //mqttService.subscribe(client, "/teachable-camera/#");
+    // REmember that the API Endpoint is set to /teachable-camera in the MqttService
     mqttService.subscribe(client, "/+/detection-count");
     mqttService.subscribe(client, "/+/detection-image");
     return () => mqttService.closeConnection(client);
@@ -205,7 +205,7 @@ export default function Dashboard() {
             noWrap
             className={classes.title}
           >
-          EyeQT 
+          Teachable Camera 
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">

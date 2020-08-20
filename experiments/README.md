@@ -1,6 +1,6 @@
-# EyeQT Evaluation Experiments
+# Teachable Camera Evaluation Experiments
 
-This repo enables analysis of EyeQT model performance. In particular, the images and scripts let an analyst determine via in-depth review the extent to which a trained EyeQT model is performing object detection adequately.
+This repo enables analysis of Teachable Camera model performance. In particular, the images and scripts let an analyst determine via in-depth review the extent to which a trained Teachable Camera model is performing object detection adequately.
 
 Step 1. Install the required packages, if needed.
 

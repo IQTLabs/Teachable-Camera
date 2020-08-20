@@ -9,7 +9,7 @@ remoteIP = str(os.getenv('REMOTE_MQTT_IP'))
 ##                Initialize Variables               ##
 #######################################################
 config = {}
-config['Local'] = ["127.0.0.1", "/eyeqt]
+config['Local'] = ["127.0.0.1", "/teachable-camera]
 timeTrigger = 0
 Active = True
 

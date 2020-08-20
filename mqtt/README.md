@@ -1,4 +1,4 @@
-# EyeQT MQTT Broker
+# Teachable Camera MQTT Broker
 
 This is an MQTT Broker that runs locally on the Coral Board. It builds on this [Docker Image](https://github.com/mje-nz/rpi-docker-mosquitto), which is a version of the Eclipse Mosquitto broker which has been compiled for ARM.
 

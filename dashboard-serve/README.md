@@ -1,4 +1,4 @@
-# EyeQT Dashboard Serve
+# Teachable Camera Dashboard Serve
 
 This is a simple NGINX Proxy that is designed to be run as a Docker Container. It build on the standard NGINX Docker image. It is configured to provide 2 functions:
 - Serve the static Web App generated in the [dashboard](../dashboard/README.md) folder. The Dockerfile copies the `build` directory to `/usr/share/nginx/html` inside the container, which is where NGINX expects static files by default. These are served on port 80
