@@ -1,0 +1,10 @@
+0 truck
+1 suv
+2 car
+3 garbage truck
+4 van
+5 mail truck
+6 box truck
+7 pickup truck
+8 stake truck
+9 bus

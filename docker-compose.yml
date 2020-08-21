@@ -1,0 +1,63 @@
+version: '3.7'
+services:
+    watchtower:
+        image: "containrrr/watchtower"
+        volumes: 
+            - "/var/run/docker.sock:/var/run/docker.sock"
+            - ./config.json:/config.json
+        restart: unless-stopped
+        command: --cleanup
+
+    mqtt:
+        build: ./mqtt
+        ports:
+            - "9001:9001"
+            - "1883:1883"
+        restart: unless-stopped
+
+    s3upload:
+        build: ./s3upload
+        restart: unless-stopped
+        volumes:
+            - ./capture:/capture
+            - ./archive:/archive
+        environment: 
+            - SECRET_KEY
+            - ACCESS_KEY
+        env_file:
+            - sb1IdInit.env
+        network_mode: "host"
+    dashboard:
+        build: ./dashboard-serve
+        ports:
+            - "80:80"
+        network_mode: "host"
+    detect:
+        build: ./detect
+        restart: unless-stopped
+        privileged: true
+        ports:
+            - "8888:8888"
+            - "7447:7447"
+        network_mode: "host"
+        env_file: 
+            - sb1IdInit.env
+        volumes:
+            - ./capture:/app/capture
+        #entrypoint: "python3 -u detect.py --videosrc=net --netsrc=rtsp://192.168.1.7:7447/poJLP0wxMlbW5thN --model=june-25-mobilenet-v1-edgetpu.tflite --labels=june-25-labels.txt --top_k=10 --threshold=0.60 --include=truck"
+        entrypoint: "python3 -u detect.py --videosrc=net --netsrc=rtsp://192.168.1.7:7447/poJLP0wxMlbW5thN --top_k=10 --threshold=0.60 --include=truck"
+       
+        #entrypoint: "python3 -u detect.py --videosrc=dev --camera_idx=0 --top_k=10 --threshold=0.60 --include=truck"  # Coral Camera
+        #entrypoint: "python3 -u detect.py --videosrc=net --netsrc=rtsp://192.168.10.32:554/s0 --top_k=10 --threshold=0.60 --include=truck" # UniFi G3 IP Camera
+        
+    monitor:
+        build: ./monitor
+        depends_on:
+          - mqtt
+        network_mode: "host"
+        devices:
+          - "/dev/ttyACM0:/dev/ttyACM0"
+        ports:
+            - "7447:7447"
+        env_file:
+             - sb1IdInit.env
