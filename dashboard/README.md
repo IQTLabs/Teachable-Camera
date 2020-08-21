@@ -1,6 +1,6 @@
-# EyeQT Dashboard
+# Teachable Camera Dashboard
 
-This is a web based dashboard for EyeQT. It lets you see what objects have been detected and provides a live view of the camera feed. It is intended to be a starting point for building out a more complete application.
+This is a web based dashboard for Teachable Camera. It lets you see what objects have been detected and provides a live view of the camera feed. It is intended to be a starting point for building out a more complete application.
 
 [Dashboard screenshot](../images/dashboard.png)
 
@@ -29,9 +29,9 @@ If you make changes to the web app, you need to recompile the static files, copy
 3. Move the **dashboard-serve** folder over to the Coral Board using `scp`. It should overwrite the **dashboard-serve** folder in the repo on the Coral Board. For example:
 ````
 // Modify for your system!! JUST AN EXAMPLE
-% scp -r dashboard-serve mendel@192.168.1.200:~/eyeqt-software/
+% scp -r dashboard-serve mendel@192.168.1.200:~/teachable-camera-software/
 ````
 
-4. On the Coral Board, in the EyeQT repo, run `docker-compose build` to build a new version of the dashboard container with the updated web app.
+4. On the Coral Board, in the teachable-camera repo, run `docker-compose build` to build a new version of the dashboard container with the updated web app.
 
 5. 🎉 Celebrate 👏🏾
