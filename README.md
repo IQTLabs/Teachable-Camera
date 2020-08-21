@@ -23,7 +23,9 @@ Teachable Camera explores a current trend in computing and artificial intelligen
 
 ### Requirements
 Estimated Cost: $250
+
 Estimated Duration of Set Up and Troubleshooting: 10 hours
+
 Required Hardware:
 - [Google Coral Dev Board](https://coral.ai/products/dev-board)
 - Camera - *OpenCV is used under the hood and we have tested it with the following cameras*
@@ -112,7 +114,7 @@ On a separate computer, enter the Coral Boards IP address in a browser to view t
 ### 🗂MQTT Topics
 
 **teachable-camera/[unit id]/detection** 
-Sent every time an object of interest is detected. The message contains a JSON object, listing all of the objects detected in a frame. The Key `objects` is an array of strings listing all of the objects currently detected. 
+Sent every time an object of interest is detected. The message contains a JSON object, listing all of the objects detected in a frame. The key `objects` is an array of strings listing all of the objects currently detected. 
 
 Example message:
 ````
