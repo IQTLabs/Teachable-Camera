@@ -55,7 +55,7 @@ Required Hardware:
 - **monitor** - Python program that subscribes to the MQTT broker and sends messages it receives out of LoRa. 
 
 ### 📦 Containers
-There are 3 containers that get built via the docker-compose file:
+There following containers are managed via the docker-compose file:
 - **watchtower** - This downloads and brings up new containers when they are available
 - **s3upload** - Runs the s3upload program
 - **detect** - Runs the detect program
