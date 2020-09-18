@@ -81,7 +81,7 @@ def on_disconnect(client, userdata, rc):
 ##       Initialize Local MQTT Bus         ##
 #############################################
 broker_address=config[Unit][0]
-local_topic= '/teachable-camera/' + uuidCoral + '/detect'
+local_topic= '/teachable-camera/' + uuidCoral #+ '/detect'
 print("connecting to MQTT broker at "+broker_address+", channel '"+local_topic+"'")
 processName = "Detect-"+ID
 clientLocal = mqtt.Client(processName) #create new instance
@@ -180,17 +180,23 @@ def detect_object(args):
 
     if args.videosrc=='dev': 
         cap = cv2.VideoCapture(args.camera_idx)
-        
+    elif args.videosrc=='file':
+        cap = cv2.VideoCapture(args.filesrc)    
     else:
         if args.netsrc==None:
             print("--videosrc was set to net but --netsrc was not specified")
             sys.exit()
         cap = cv2.VideoCapture(args.netsrc)        
-
+    total_frames = cap.get(cv2.CAP_PROP_FRAME_COUNT) 
+    frame_count = 0
     while cap.isOpened():
-        ret, frame = cap.read()
-        if not ret:
-            break
+
+        (grabbed, frame) = cap.read()
+
+        if not grabbed and args.videosrc=='file':
+            cap = cv2.VideoCapture(args.filesrc)
+            continue          
+
         cv2_im = frame
 
         cv2_im_rgb = cv2.cvtColor(cv2_im, cv2.COLOR_BGR2RGB)
@@ -232,12 +238,14 @@ def main():
     parser.add_argument('--camera_idx', type=int, help='Index of which video source to use. ', default = 0)
     parser.add_argument('--threshold', type=float, default=0.1,
                         help='classifier score threshold')
-    parser.add_argument('--videosrc', help='Directly connected (dev) or Networked (net) video source. ', choices=['dev','net'],
+    parser.add_argument('--videosrc', help='Directly connected (dev) or Networked (net) video source. ', choices=['dev','net','file'],
                         default='dev')
     parser.add_argument('--displayBool', help='Is a display attached',
                         default='False',
                         choices=['True', 'False'])
     parser.add_argument('--netsrc', help="Networked video source, example format: rtsp://192.168.1.43/mpeg4/media.amp",)
+    parser.add_argument('--filesrc', help="Video file source. The videos subdirectory gets mapped into the Docker container, so place your files there.",)
+    
     parser.add_argument('--exclude', help='A comma seperated list of objects that do not trigger a capture',
                         default='')
     parser.add_argument('--include', help='A comma seperated list of objects that trigger a capture',

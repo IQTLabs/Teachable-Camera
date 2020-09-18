@@ -44,6 +44,7 @@ services:
             - sb1IdInit.env
         volumes:
             - ./capture:/app/capture
+            - ./detect/videos:/app/videos
         #entrypoint: "python3 -u detect.py --videosrc=net --netsrc=rtsp://192.168.1.7:7447/poJLP0wxMlbW5thN --model=june-25-mobilenet-v1-edgetpu.tflite --labels=june-25-labels.txt --top_k=10 --threshold=0.60 --include=truck"
         entrypoint: "python3 -u detect.py --videosrc=net --netsrc=rtsp://192.168.1.7:7447/poJLP0wxMlbW5thN --top_k=10 --threshold=0.60 --include=truck"
        

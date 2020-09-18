@@ -58,7 +58,9 @@ The model architecture is limited to what is supported by the Coral. It is proba
  - **videosrc** what video source you want to use. Choices are `net` or `dev`. Default is `dev`:
     - **dev** a directly connected (dev) camera, can be Coral cam or USB cam or Networked 
     - **net** network video source, using RTSP. The --netsrc argument must be specified. 
+	- **file** a video file can be used as a source
  - **camera_idx**  Index of which video source to use. I am not sure how OpenCV enumerates them. Defaults to 0.
+ - **filesrc** the path to the video file. In the Docker container should be at /app/videos
  - **netsrc** If the `videosrc` is `net` then specify the URL. Example: `rtsp://192.168.1.43/mpeg4/media.amp`
  - **exclude** A comma separated list of objects to exclude from recording. If there is a space in the object label, enclose it in quotes.
   - **exclude** A comma separated list of objects to exclude from recording. If there is a space in the object label, enclose it in quotes.
