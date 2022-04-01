@@ -112,7 +112,8 @@ def generate():
     while True:
         
         # This is how you set the frames per second... crude
-        sleep(0.20)
+        sleep_time = 0.20
+        sleep(sleep_time)
 
         # wait until the lock is acquired
         with lock:

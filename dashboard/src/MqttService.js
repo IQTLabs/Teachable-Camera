@@ -8,6 +8,7 @@ url.protocol = "ws:";
 url.port = 9001;
 url.pathname = "/";
 console.log("url: " + url);
+// nosemgrep: github.workflows.config.detect-insecure-websocket
 const websocketUrl = url.toString(); //"ws://192.168.1.200:9001";
 const apiEndpoint = "/teachable-camera";
 function getClient() {

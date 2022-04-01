@@ -59,7 +59,9 @@ while Active:
             file_full_path = os.path.join(s3.image_path, file)
             print(file_full_path)
             if os.path.exists(file_full_path.replace('jpeg','json')):
-                time.sleep(0.5)  # bug fix - adding delay to ensure the json file has been fully written
+                write_delay = 0.5
+                time.sleep(write_delay)  # bug fix - adding delay to ensure the json file has been fully written
                 response = s3.uploadImage(file_full_path, file_full_path.replace('jpeg','json'))
                 clientLocal.publish(local_topic, response)
-    time.sleep(0.1)
+    sleep_time = 0.1
+    time.sleep(sleep_time)

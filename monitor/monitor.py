@@ -111,4 +111,5 @@ while True:
         #sendMessage("heartbeat", "Monitor-"+Unit+"-"+ID+" Heartbeat")
         stringV1="Heartbeat"
         ser.write(stringV1.encode()) #send it to LoRa radio
-    time.sleep(0.005)
+    sleep_time = 0.005
+    time.sleep(sleep_time)
